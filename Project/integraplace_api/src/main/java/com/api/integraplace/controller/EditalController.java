@@ -1,6 +1,7 @@
 package com.api.integraplace.controller;
 
 import com.api.integraplace.entity.EditalEntity;
+import com.api.integraplace.form.EditalBotForm;
 import com.api.integraplace.form.EditalForm;
 import com.api.integraplace.service.EditalService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,11 @@ public class EditalController {
 
         return ResponseEntity.status(HttpStatus.OK).body(_EditalService.getAll());
 
+    }
+
+    @GetMapping("/allbysystemname/{system}")
+    public ResponseEntity<List<EditalBotForm>> findBySystemName(@PathVariable("system") String systemName){
+        return ResponseEntity.status(HttpStatus.OK).body(_EditalService.findAllBySystemName(systemName));
     }
 
     @DeleteMapping("/delete/{Id}")

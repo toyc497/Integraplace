@@ -17,6 +17,8 @@ public class EditalForm {
 
     private String status;
 
+    private String portal_link;
+
     private String portal_name;
 
 }

@@ -1,6 +1,7 @@
 package com.api.integraplace.controller;
 
 import com.api.integraplace.DAO.CompetitorDAO;
+import com.api.integraplace.form.PayloadTCU;
 import com.api.integraplace.service.CompetitorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,6 +25,13 @@ public class CompetitorController {
     public ResponseEntity<CompetitorDAO> getCompetitorPendence(@PathVariable("cnpj") String cnpj_aux) throws URISyntaxException, IOException, InterruptedException {
 
         return ResponseEntity.status(HttpStatus.OK).body(_CompetitorService.analyseCompetitorPendence(cnpj_aux));
+
+    }
+
+    @GetMapping("/consultbycnpj/{cnpj}")
+    public ResponseEntity<PayloadTCU> findCompetitorByCNPJ(@PathVariable("cnpj") String cnpjAux) throws URISyntaxException, IOException, InterruptedException {
+
+        return ResponseEntity.status(HttpStatus.OK).body(_CompetitorService.analyseCompetitorTCU(cnpjAux));
 
     }
 

@@ -28,4 +28,7 @@ public class WRHSService {
         return _WRHSRepository.findAll();
     }
 
+    public void deleteWRHS(Long idAux) {
+        _WRHSRepository.deleteById(idAux);
+    }
 }

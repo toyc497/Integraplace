@@ -2,6 +2,7 @@ package com.api.integraplace.service;
 
 
 import com.api.integraplace.DAO.CompetitorDAO;
+import com.api.integraplace.form.PayloadTCU;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
 
@@ -41,6 +42,31 @@ public class CompetitorService {
         }
 
         return null;
+    }
+
+    public PayloadTCU analyseCompetitorTCU(String cnpjAux) throws URISyntaxException, IOException, InterruptedException {
+
+        cnpjAux = cnpjAux.replaceAll("[^0-9]", "");
+        String uri = "https://certidoes-apf.apps.tcu.gov.br/api/rest/publico/certidoes/"+ cnpjAux +"?seEmitirPDF=false";
+
+        HttpRequest requestApi = HttpRequest.newBuilder()
+                .uri(new URI(uri))
+                .header("User-Agent","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36")
+                .timeout(Duration.of(120, SECONDS))
+                .GET()
+                .build();
+
+        HttpResponse<String> response = HttpClient.newHttpClient().send(requestApi, HttpResponse.BodyHandlers.ofString());
+
+        if(response.statusCode() == 200){
+
+            ObjectMapper mapper = new ObjectMapper();
+            return mapper.readValue(response.body(), PayloadTCU.class);
+
+        }
+
+        return null;
+
     }
 
 }

@@ -33,4 +33,9 @@ public class WRHSController {
 
     }
 
+    @DeleteMapping("/delete/{Id}")
+    public void deleteWarehouse(@PathVariable("Id") Long idAux){
+        _WRHSService.deleteWRHS(idAux);
+    }
+
 }
