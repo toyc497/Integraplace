@@ -22,6 +22,9 @@ public class WRHSEntity {
     @Column(name="code",length = 20,unique=true)
     private String code;
 
+    @Column(name = "active", length = 1, unique = false)
+    private String active;
+
     @Column(name="name",length = 50,unique=true)
     @NotNull
     private String name;

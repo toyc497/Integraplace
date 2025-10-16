@@ -33,6 +33,11 @@ public class WRHSController {
 
     }
 
+    @PutMapping("/update")
+    public ResponseEntity<WRHSEntity> updateWarehouse(@RequestBody @Valid WRHSEntity wrhs){
+        return ResponseEntity.status(HttpStatus.OK).body(this._WRHSService.updateWarehouse(wrhs));
+    }
+
     @DeleteMapping("/delete/{Id}")
     public void deleteWarehouse(@PathVariable("Id") Long idAux){
         _WRHSService.deleteWRHS(idAux);

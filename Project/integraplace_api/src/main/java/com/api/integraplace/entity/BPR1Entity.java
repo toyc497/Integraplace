@@ -23,13 +23,16 @@ public class BPR1Entity {
     @Column(name="code",length = 20,unique=true)
     private String code;
 
-    @Column(name="fullname",length = 50,unique=true)
+    @Column(name="fullname",length = 500,unique = false)
     @NotNull
     private String fullname;
 
-    @Column(name = "cpf_cnpj", length = 11, unique = true)
+    @Column(name = "cpf_cnpj", length = 14, unique = true)
     @NotNull
     private Long cpf_cnpj;
+
+    @Column(name = "active", length = 1, unique = false)
+    private String active;
 
     @Column(name = "age", length = 3)
     private Integer age;
@@ -38,7 +41,7 @@ public class BPR1Entity {
     @NotNull
     private String type;
 
-    @Column(name = "email", length = 50)
+    @Column(name = "email", length = 200)
     @Email
     @NotNull
     private String email;

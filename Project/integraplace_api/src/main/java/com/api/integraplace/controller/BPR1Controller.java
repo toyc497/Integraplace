@@ -32,4 +32,12 @@ public class BPR1Controller {
 
     }
 
+    @PutMapping("/update")
+    public ResponseEntity<BPR1Entity> updateBussinessPartner1(@RequestBody @Valid BPR1Entity bpr1){
+        BPR1Entity bpr1Response = _BPR1Service.updateBussinessPartner(bpr1);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(bpr1Response);
+
+    }
+
 }

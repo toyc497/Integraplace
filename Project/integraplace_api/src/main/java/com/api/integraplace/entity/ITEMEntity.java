@@ -22,7 +22,7 @@ public class ITEMEntity {
     @Column(name="code",length = 20,unique=true)
     private String code;
 
-    @Column(name="name",length = 50,unique=true)
+    @Column(name="name",length = 50,unique=false)
     @NotNull
     private String name;
 

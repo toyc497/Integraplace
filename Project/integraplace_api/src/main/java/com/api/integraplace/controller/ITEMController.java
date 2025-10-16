@@ -32,5 +32,9 @@ public class ITEMController {
         return ResponseEntity.status(HttpStatus.OK).body(itemServiceResponse);
     }
 
+    @PutMapping("/update")
+    public ResponseEntity<ITEMEntity> updateItem(@RequestBody @Valid ITEMEntity itemAux){
+        return ResponseEntity.status(HttpStatus.OK).body(this._ITEMService.updateItem(itemAux));
+    }
 
 }

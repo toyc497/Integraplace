@@ -30,7 +30,7 @@ public class ORITService {
     @Autowired
     private NotificationRepository _NotificationRepository;
 
-    public void findAllORDSID(String ordsCode){
+    public List<ORITEntity> findAllORDSID(String ordsCode){
         Optional<ORDSEntity> ordsAux = _ORDSRepository.findByCode(ordsCode);
         ORDSEntity ordsFounded = null;
 
@@ -45,7 +45,7 @@ public class ORITService {
         if(listBD.isPresent()){
             listFounded = listBD.get();
         }
-
+        return listFounded;
     }
 
     public double saveORITList(ORDSEntity orderFatherID, List<ORITForm> listaORIT){

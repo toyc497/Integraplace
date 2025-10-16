@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/OrderItem")
@@ -18,10 +17,8 @@ public class ORITController {
     private ORITService _ORITService;
 
     @GetMapping("/findByOrdsCode/{ordscode}")
-    public void findOrderItemByORDSCode(@PathVariable("ordscode") String ordscode){
-        _ORITService.findAllORDSID(ordscode);
-        //return ResponseEntity.status(HttpStatus.OK).body(_ORITService.findAllORDSID(ordscode));
-
+    public ResponseEntity<List<ORITEntity>> findOrderItemByORDSCode(@PathVariable("ordscode") String ordscode){
+        return ResponseEntity.status(HttpStatus.OK).body(_ORITService.findAllORDSID(ordscode));
     }
 
 }

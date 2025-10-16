@@ -54,4 +54,20 @@ public class ITEMService {
         return _ITEMRepository.findAll();
     }
 
+    public ITEMEntity updateItem(ITEMEntity _itemAux) {
+
+        Optional<ITEMEntity> itemBD = this._ITEMRepository.findById(_itemAux.getId());
+        ITEMEntity itemAux = null;
+
+        if (itemBD.isPresent()){
+            itemAux = itemBD.get();
+        }
+
+        assert itemAux != null;
+        itemAux.setQuantity(_itemAux.getQuantity());
+        itemAux.setMinimal_quantity(_itemAux.getMinimal_quantity());
+
+        return this._ITEMRepository.save(itemAux);
+
+    }
 }

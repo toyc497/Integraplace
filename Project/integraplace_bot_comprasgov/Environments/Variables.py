@@ -1,10 +1,15 @@
-class Variables:
-    keycloak = {
-        'url': 'http://127.0.0.1:8087',
-        'realm': 'Integraplace',
-        'clientid': 'integraplace_web_client',
-        'grant_type': 'password',
-        'user': 'bot@integraplace.com',
-        'password': 'bot@123456'
-    }
-    api_uri = 'http://127.0.0.1:8085'
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+keycloak = {
+    'url': os.getenv('KC_HOST'),
+    'realm': os.getenv('KC_CLIENT_ID'),
+    'clientid': os.getenv('BOT_CLIENTID'),
+    'grant_type': 'password',
+    'user': os.getenv('BOT_USER'),
+    'password': os.getenv('BOT_PASSWORD')
+}
+
+api_uri = os.getenv('API_HOST')
